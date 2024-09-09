@@ -35,65 +35,39 @@ El diagrama de entidad-relación.
    Información sobre las obras de arte disponibles para alquiler.
    Campos:
 
-   id_obra (INT, PK, AI): Identificador único de la obra.
-   titulo (VARCHAR(255)): Título de la obra.
-   descripcion (TEXT): Descripción de la obra.
-   artista (VARCHAR(100)): Artista que creó la obra.
-   precio_alquiler (DECIMAL(10,2)): Precio de alquiler por día.
-   disponibilidad (BOOLEAN): Disponibilidad para alquiler.
-   imagen (VARCHAR(255)): Ruta de la imagen de la obra.
+ ![alt text](image-1.png)
 
 3. Tabla alquileres
 
    Información sobre los alquileres realizados.
    Campos:
 
-   id_alquiler (INT, PK, AI): Identificador único del alquiler.
-   id_usuario (INT, FK): Identificador del usuario que alquila.
-   id_obra (INT, FK): Identificador de la obra alquilada.
-   fecha_inicio (DATE): Fecha de inicio del alquiler.
-   fecha_fin (DATE): Fecha de fin del alquiler.
-   estado (VARCHAR(50)): Estado del alquiler (e.g., "activo", "completado").
+![alt text](image-2.png)
 
 4. Tabla pagos
 
    Información sobre los pagos realizados.
    Campos:
 
-   id_pago (INT, PK, AI): Identificador único del pago.
-   id_alquiler (INT, FK): Identificador del alquiler asociado.
-   monto (DECIMAL(10,2)): Monto del pago.
-   fecha_pago (DATETIME): Fecha en que se realizó el pago.
-   metodo_pago (VARCHAR(50)): Método de pago utilizado (e.g., tarjeta de crédito).
+![alt text](image-3.png)
 
 5. Tabla mensajes
 
    Comunicación entre usuarios y administradores.
    Campos:
 
-   id_mensaje (INT, PK, AI): Identificador único del mensaje.
-   id_remitente (INT, FK): Identificador del remitente (usuario o admin).
-   id_destinatario (INT, FK): Identificador del destinatario (usuario o admin).
-   mensaje (TEXT): Contenido del mensaje.
-   fecha_envio (DATETIME): Fecha en que se envió el mensaje.
+![alt text](image-4.png)
 
 6. Tabla preguntas_respuestas
 
    Preguntas frecuentes y sus respuestas.
    Campos:
 
-   id_pregunta (INT, PK, AI): Identificador único de la pregunta.
-   pregunta (TEXT): Texto de la pregunta.
-   respuesta (TEXT): Respuesta a la pregunta.
-   fecha_creacion (DATETIME): Fecha de creación.
+![alt text](image-5.png)
 
 7. Tabla publicidad
 
    Imágenes y mensajes de publicidad en el sitio web.
    Campos:
 
-   id_publicidad (INT, PK, AI): Identificador único de la publicidad.
-   imagen (VARCHAR(255)): Ruta de la imagen.
-   mensaje (TEXT): Mensaje de publicidad.
-   fecha_inicio (DATE): Fecha de inicio de la publicidad.
-   fecha_fin (DATE): Fecha de fin de la publicidad.
+ ![alt text](image-6.png)
