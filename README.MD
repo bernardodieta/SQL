@@ -28,13 +28,7 @@ El diagrama de entidad-relación.
    Información de los usuarios registrados.
    Campos:
 
-    { id_usuario (INT, PK, AI): Identificador único del usuario.
-    nombre (VARCHAR(100)): Nombre del usuario.
-    email (VARCHAR(100), UNIQUE): Correo electrónico del usuario.
-    password (VARCHAR(255)): Contraseña (hash). Encriptada con Bcrypt
-    direccion (VARCHAR(255)): Dirección del usuario.
-    telefono (VARCHAR(15)): Número de teléfono del usuario.
-    fecha_registro (DATETIME): Fecha de registro del usuario.}
+![alt text](image.png)
 
 2. Tabla obras_arte
 
