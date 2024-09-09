@@ -7,7 +7,7 @@ Tiene que tener un sistema que permita rentar las obras seleccionadas si es que 
 que se requiera.
 Tiene que tener un sistema para registrar usuarios(crud)
 Tiene que tener un sistema de notificaciones
-Sistema de chat 
+Sistema de chat
 Sistema para el administrador donde pueda ver todas las obras de artes y el estado de cada una.
 La base de datos para el e-commerce de alquiler de obras de arte gestionará información sobre usuarios, obras de arte, alquileres, pagos, mensajes, preguntas y respuestas, y publicidad. Esta base de datos soportará las operaciones de un e-commerce, incluyendo la gestión de catálogos, transacciones financieras, y la comunicación entre usuarios y administradores.
 
@@ -28,13 +28,13 @@ El diagrama de entidad-relación.
    Información de los usuarios registrados.
    Campos:
 
-   id_usuario (INT, PK, AI): Identificador único del usuario.
-   nombre (VARCHAR(100)): Nombre del usuario.
-   email (VARCHAR(100), UNIQUE): Correo electrónico del usuario.
-   password (VARCHAR(255)): Contraseña (hash). Encriptada con Bcrypt
-   direccion (VARCHAR(255)): Dirección del usuario.
-   telefono (VARCHAR(15)): Número de teléfono del usuario.
-   fecha_registro (DATETIME): Fecha de registro del usuario.
+    { id_usuario (INT, PK, AI): Identificador único del usuario.
+    nombre (VARCHAR(100)): Nombre del usuario.
+    email (VARCHAR(100), UNIQUE): Correo electrónico del usuario.
+    password (VARCHAR(255)): Contraseña (hash). Encriptada con Bcrypt
+    direccion (VARCHAR(255)): Dirección del usuario.
+    telefono (VARCHAR(15)): Número de teléfono del usuario.
+    fecha_registro (DATETIME): Fecha de registro del usuario.}
 
 2. Tabla obras_arte
 
@@ -42,7 +42,7 @@ El diagrama de entidad-relación.
    Campos:
 
    id_obra (INT, PK, AI): Identificador único de la obra.
-   titulo (VARCHAR(255)): Título de la obra. 
+   titulo (VARCHAR(255)): Título de la obra.
    descripcion (TEXT): Descripción de la obra.
    artista (VARCHAR(100)): Artista que creó la obra.
    precio_alquiler (DECIMAL(10,2)): Precio de alquiler por día.
