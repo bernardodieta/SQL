@@ -1,0 +1,125 @@
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    date VARCHAR(50),
+    tel BIGINT,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(50),
+    cart_id INT REFERENCES carts(id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE addresses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT REFERENCES users(id) ON DELETE CASCADE,
+    country VARCHAR(100) NOT NULL,
+    state VARCHAR(100) NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    zipcode INT NOT NULL,
+    address_text VARCHAR(255) NOT NULL,
+    numext INT NOT NULL,
+    numint VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE categories (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    category VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE contentPromo (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    header_img VARCHAR(255) NOT NULL,
+    header_text VARCHAR(255),
+    promo_img VARCHAR(255) NOT NULL,
+    promo_text VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE offers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT REFERENCES products(id) ON DELETE CASCADE,
+    discount_percentage DECIMAL NOT NULL,
+    start_date TIMESTAMP NOT NULL,
+    end_date TIMESTAMP NOT NULL,
+    active BOOLEAN DEFAULT FALSE
+);
+
+CREATE TABLE products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    stock INT NOT NULL,
+    price DECIMAL NOT NULL,
+    category_id INT REFERENCES categories(id),
+    brand VARCHAR(100),
+    model VARCHAR(100),
+    color VARCHAR(100),
+    gamer VARCHAR(100),
+    battery VARCHAR(100),
+    garantia VARCHAR(100),
+    botones VARCHAR(100),
+    iluminacion VARCHAR(100),
+    bluetooth VARCHAR(100),
+    recargable VARCHAR(100),
+    conector VARCHAR(100),
+    sistema VARCHAR(100),
+    resolution VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE product_images (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT REFERENCES products(id) ON DELETE CASCADE,
+    image_url VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE questionProducts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    content VARCHAR(255) NOT NULL,
+    user_id INT REFERENCES users(id) ON DELETE CASCADE,
+    product_id INT REFERENCES products(id) ON DELETE CASCADE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT REFERENCES users(id) ON DELETE CASCADE,
+    email VARCHAR(100) NOT NULL,
+    total DECIMAL NOT NULL,
+    delivery_status ENUM('Pendiente', 'Entregada', 'Cancelada') DEFAULT 'Pendiente',
+    payment_status ENUM('Rechazado', 'Pendiente', 'Incompleto', 'Completado') DEFAULT 'Pendiente',
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+CREATE TABLE order_products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT REFERENCES orders(id) ON DELETE CASCADE,
+    product_id INT REFERENCES products(id),
+    quantity INT NOT NULL,
+    price DECIMAL NOT NULL,
+    total DECIMAL NOT NULL
+);
+CREATE TABLE notifications (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT REFERENCES users(id) ON DELETE CASCADE,
+    type VARCHAR(100) NOT NULL,
+    message VARCHAR(255) NOT NULL,
+    is_read BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE user_product_visits (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT REFERENCES users(id) ON DELETE CASCADE,
+    product_id INT REFERENCES products(id) ON DELETE CASCADE,
+    visited_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
